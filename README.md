@@ -1,24 +1,35 @@
-# README
+# Usersテーブル
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+|Column|Type|Options|
+|name|string型|NOT NULL|
+|email|string型|NOT NULL,ユニーク制約|
+|password|string型|NOT NULL|
 
-Things you may want to cover:
 
-* Ruby version
+# Itemsテーブル
 
-* System dependencies
+|Column|Type|Options|
+|products|string型|NOT NULL|
+|category|string型|NOT NULL|
+|price|text型|NOT NULL|
+|seller|references型|NOT NULL|
 
-* Configuration
 
-* Database creation
 
-* Database initialization
+# Purchaseテーブル
 
-* How to run the test suite
+|Column|Type|Options|
+|address|string型|NOT NULL|
+|post-code|string型|NOT NULL|
+|telephone-number|string型|NOT NULL|
+|who|references型|NOT NULL|
+|buy|references型|NOT NULL|
 
-* Services (job queues, cache servers, search engines, etc.)
+# shippingテーブル
 
-* Deployment instructions
+|Column|Type|Options|
+|address|string型|NOT NULL|
+|post-code|string型|-------NOT NULL|
 
-* ...
+### Association
+（ここに追記していく）
