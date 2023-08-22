@@ -9,7 +9,7 @@
 |first_name|string|null: false|
 |last_name_kana|string|null: false|
 |last_name_kana|string|null: false|
-|birth_date|string|null: false|
+|birth_date|date|null: false|
 
 ### Association
   has_many :items
@@ -20,14 +20,14 @@
 |Column|Type|Options|
 | ---- | -- | ----- |
 |products|string|null: false|
-|product_description|integer|null: false|
+|product_description|text|null: false|
 |category_id|integer|null: false|
-|product_condition|integer|null: false|
+|product_condition_id|integer|null: false|
 |shipping_charges_id|integer|null: false|
 |days_to_ship_id|integer|null: false|
-|price|integer|null: false|
-|user|references|null: false, foreign_key: true|
-|region_of_origin_id|integer|null: false|
+|price||null: false|
+|user|string|null: false, foreign_key: true|
+|region_of_origin_id|intejer|null: false|
 |prefecture_id|integer|null: false|
 
 # Purchasesテーブル
@@ -40,7 +40,7 @@
 ### Association
 belongs_to :user
 has_one :shipping
-belongs_to :items
+belongs_to :item
 
 # shippingsテーブル
 
@@ -50,10 +50,9 @@ belongs_to :items
 |prefecture_id|integer|null: false|
 |building_name|string| |
 |post_code|string|null: false|
-|region_of_origin_id|integer|null: false|
 |phone_number|string|null: false|
 |city_town_village_id|integer|null: false|
 |purchase|string|null: false, foreign_key: true|
 
 ### Association
-has_one :shipping
+has_one :purchase
