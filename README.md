@@ -9,7 +9,7 @@
 |first_name|string|null: false|
 |last_name_kana|string|null: false|
 |last_name_kana|string|null: false|
-|date|string|null: false|
+|birth_date|string|null: false|
 
 ### Association
   has_many :items
@@ -19,40 +19,41 @@
 
 |Column|Type|Options|
 | ---- | -- | ----- |
-|products_id|integer|null: false|
-|product_description_id|integer|null: false|
+|products|string|null: false|
+|product_description|integer|null: false|
 |category_id|integer|null: false|
 |product_condition|integer|null: false|
 |shipping_charges_id|integer|null: false|
 |days_to_ship_id|integer|null: false|
-|price|string|null: false|
-|seller|references|null: false, foreignkey|
+|price|integer|null: false|
+|user|references|null: false, foreign_key: true|
 |region_of_origin_id|integer|null: false|
+|prefecture_id|integer|null: false|
 
 # Purchasesテーブル
 
 |Column|Type|Options|
 | ---- | -- | ----- |
-|payment_method|string|null: false, foreignkey|
-|buyer|string|null: false, foreignkey|
-|product|string|null: false, foreignkey|
 |user|string|null: false, foreignkey|
 |item|string|null: false, foreignkey|
 
 ### Association
-has_many :user
-belongs_to :shipping
-has_one :items
+belongs_to :user
+has_one :shipping
+belongs_to :items
 
 # shippingsテーブル
 
 |Column|Type|Options|
 | ---- | -- | ----- |
 |address|string|null: false|
-|prefecture|string|null: false|
-|building_name|string|null: false|
+|prefecture_id|integer|null: false|
+|building_name|string| |
 |post_code|string|null: false|
 |region_of_origin_id|integer|null: false|
 |phone_number|string|null: false|
 |city_town_village_id|integer|null: false|
-|purchase|string|null: false, foreignkey|
+|purchase|string|null: false, foreign_key: true|
+
+### Association
+has_one :shipping
