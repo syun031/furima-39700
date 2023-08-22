@@ -25,17 +25,20 @@
 |product_condition_id|integer|null: false|
 |shipping_charges_id|integer|null: false|
 |days_to_ship_id|integer|null: false|
-|price||null: false|
-|user|string|null: false, foreign_key: true|
-|region_of_origin_id|intejer|null: false|
+|price|string|null: false|
+|user|integer|null: false, foreign_key: true|
 |prefecture_id|integer|null: false|
+
+### Association
+has_many :user
+has_one :purchase
 
 # Purchasesテーブル
 
 |Column|Type|Options|
 | ---- | -- | ----- |
-|user|string|null: false, foreignkey|
-|item|string|null: false, foreignkey|
+|user|integer|null: false, foreign_key: true|
+|item|integer|null: false, foreign_key: true|
 
 ### Association
 belongs_to :user
@@ -51,8 +54,8 @@ belongs_to :item
 |building_name|string| |
 |post_code|string|null: false|
 |phone_number|string|null: false|
-|city_town_village_id|integer|null: false|
-|purchase|string|null: false, foreign_key: true|
+|city_town_village|string|null: false|
+|purchase|integer|null: false, foreign_key: true|
 
 ### Association
-has_one :purchase
+belongs to :purchase
