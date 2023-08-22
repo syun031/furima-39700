@@ -19,26 +19,26 @@
 
 |Column|Type|Options|
 | ---- | -- | ----- |
-|products|string|null: false|
+|product|string|null: false|
 |product_description|text|null: false|
 |category_id|integer|null: false|
 |product_condition_id|integer|null: false|
-|shipping_charges_id|integer|null: false|
+|shipping_charge_id|integer|null: false|
 |days_to_ship_id|integer|null: false|
-|price|string|null: false|
-|user|integer|null: false, foreign_key: true|
+|price|integer|null: false|
+|user|references|null: false, foreign_key: true|
 |prefecture_id|integer|null: false|
 
 ### Association
-has_many :user
+belongs_to :user
 has_one :purchase
 
 # Purchasesテーブル
 
 |Column|Type|Options|
 | ---- | -- | ----- |
-|user|integer|null: false, foreign_key: true|
-|item|integer|null: false, foreign_key: true|
+|user|references|null: false, foreign_key: true|
+|item|references|null: false, foreign_key: true|
 
 ### Association
 belongs_to :user
@@ -55,7 +55,7 @@ belongs_to :item
 |post_code|string|null: false|
 |phone_number|string|null: false|
 |city_town_village|string|null: false|
-|purchase|integer|null: false, foreign_key: true|
+|purchase|references|null: false, foreign_key: true|
 
 ### Association
 belongs to :purchase
