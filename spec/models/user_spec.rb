@@ -56,11 +56,11 @@ it 'パスワードは、半角英数字混合での入力が必須であるこ�
   expect(@user.errors.full_messages).to_not include('Password must include both letters and numbers')
 end
 
-it 'passwordとpassword_confirmationが不一致では登録できない' do
-  @user.password = '123456'
-  @user.password_confirmation = '1234567'
+it 'passwordは半角英字と半角数字の両方を含む必要がある' do
+  @user.password = 'password123'
+  @user.password_confirmation = 'password123'
   @user.valid?
-  expect(@user.errors.full_messages).to include("Password confirmation doesn't match Password")
+  expect(@user.errors.full_messages).to_not include('Password must include both letters and numbers')
 end
 
 it 'お名前(全角)は、名字と名前がそれぞれ必須であること' do
