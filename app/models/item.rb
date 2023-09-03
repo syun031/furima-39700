@@ -8,7 +8,10 @@ class Item < ApplicationRecord
   belongs_to :days_to_ship
 
   validates :title, :text, presence: true
-
+  validates :image_presence
+  validates :product, presence: true
+  validates :product_description, presence: true
+  validates :category_id, :presence: true
   validates :category_id, numericality: { other_than: 1 , message: "can't be blank"} 
   validates :product_condition_id, numericality:  { other_than: 1 , message: "can't be blank"}
   validates :shipping_charge_id, numericality:  { other_than: 1 , message: "can't be blank"}
