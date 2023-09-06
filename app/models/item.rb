@@ -7,7 +7,6 @@ class Item < ApplicationRecord
   belongs_to :prefecture
   belongs_to :days_to_ship
 
-  validates :title, :text, presence: true
   validates :product, presence: true
   validates :product_description, presence: true
   validates :category_id, presence: true
