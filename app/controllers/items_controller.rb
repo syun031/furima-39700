@@ -1,13 +1,11 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create]
-  before_action :move_to_index, except: [:index, :show]
 
 def new
   @item = Item.new
 end
 
 def index
-  @item = Item.new
 end
 
 def create

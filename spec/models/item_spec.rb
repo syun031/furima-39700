@@ -13,6 +13,30 @@ RSpec.describe Item, type: :model do
     end
 
     context '商品出品できないとき' do
+      it '価格が空では出品できない' do
+          @item.price = nil
+          @item.valid?
+          expect(@item.errors[:price]).to include("can't be blank")
+      end
+  
+      it '価格に半角数字以外が含まれている場合は出品できない' do
+          @item.price = '1000円'
+          @item.valid?
+          expect(@item.errors[:price]).to include('is not a number')
+      end
+  
+      it '価格が300円未満では出品できない' do
+          @item.price = 299
+          @item.valid?
+          expect(@item.errors[:price]).to include('must be greater than or equal to 300')
+      end
+  
+      it '価格が9,999,999円を超えると出品できない' do
+          @item.price = 10_000_000
+          @item.valid?
+          expect(@item.errors[:price]).to include('must be less than or equal to 9999999')
+      end
+
       it '商品画像が必須であること' do
         @item.image = nil
         @item.valid?
