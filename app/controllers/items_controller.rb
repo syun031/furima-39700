@@ -6,7 +6,7 @@ def new
 end
 
 def index
-  @items = Item.all
+  @item = Item.includes(:item).order("created_at DESC")
 end
 
 def create
