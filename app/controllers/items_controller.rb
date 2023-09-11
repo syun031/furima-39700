@@ -6,7 +6,7 @@ def new
 end
 
 def index
-  @item = Item.all
+  @items = Item.all
 end
 
 def create
