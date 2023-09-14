@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :update]
-
+  before_action :set_item, only: [:show, :edit, :update]
 def new
   @item = Item.new
 end
@@ -39,6 +39,10 @@ def update
 end
 
 private
+
+def set_item
+  @item = Item.find(params[:id])
+end
 
 def message_params
   params.require(:item).permit(:product, :product_description, :price, :category_id, :product_condition_id, :shipping_charge_id, :prefecture_id, :days_to_ship_id, :image).merge(user_id: current_user.id)
