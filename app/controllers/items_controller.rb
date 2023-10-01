@@ -1,6 +1,7 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
   before_action :set_item, only: [:show, :edit, :update, :destroy]
+
 def new
   @item = Item.new
 end
@@ -22,7 +23,7 @@ def show
 end
 
 def edit
-  if current_user != @item.user
+  if current_user != @item.user || @item.purchase
     redirect_to root_path
   end
 end
@@ -36,7 +37,7 @@ def update
 end
 
 def destroy
-  if current_user != @item.user
+  if current_user = @item.user
     @item.destroy
     redirect_to root_path
   else
