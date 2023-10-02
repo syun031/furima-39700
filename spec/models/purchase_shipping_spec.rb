@@ -68,11 +68,43 @@ it '電話番号が必須であること' do
   expect(@purchase_shipping.errors.full_messages).to include("Phone number can't be blank")
 end
 
-it '電話番号は10桁以上11桁以内の半角数値のみ保存可能であること' do
-  @purchase_shipping.phone_number = '090-1234-5678'
+it '電話番号が9桁以下では購入できない' do
+  @purchase_shipping.phone_number = '123456789'
   @purchase_shipping.valid?
-  expect(@purchase_shipping.errors.full_messages).to include('Phone number is invalid')
-      end
+  expect(@purchase_shipping).not_to be_valid
+
+  @purchase_shipping.phone_number = '12345678'
+  @purchase_shipping.valid?
+  expect(@purchase_shipping).not_to be_valid
+end
+
+it '電話番号が12桁以上では購入できない' do
+  @purchase_shipping.phone_number = '123456789012'
+  @purchase_shipping.valid?
+  expect(@purchase_shipping).not_to be_valid
+
+  @purchase_shipping.phone_number = '1234567890123'
+  @purchase_shipping.valid?
+  expect(@purchase_shipping).not_to be_valid
+end
+
+it '電話番号に半角数字以外が含まれている場合は購入できない' do
+  @purchase_shipping.phone_number = '0901234abcd'
+  @purchase_shipping.valid?
+  expect(@purchase_shipping).not_to be_valid
+end
+
+it 'userが紐付いていなければ購入できない' do
+  @purchase_shipping.user_id = nil
+  @purchase_shipping.valid?
+  expect(@purchase_shipping).not_to be_valid
+end
+
+it 'itemが紐付いていなければ購入できない' do
+  @purchase_shipping.item_id = nil
+  @purchase_shipping.valid?
+  expect(@purchase_shipping).not_to be_valid
+end
     end
   end
 end
