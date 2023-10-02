@@ -33,14 +33,15 @@
     <p class="or-text">or</p>
     <%= link_to "削除", item_path(@item), data: { turbo_method: :delete }, class:"item-destroy" %>
     <% end %>
-      <% elsif @item.purchase.present? %>
         <% else %>
+          <% if !@item.purchase.present? %>
      <!-- ログイン状態で、自身が出品していない商品の場合 -->
     <%= link_to "購入画面に進む", item_purchases_path(item_id: @item.id), data:{ turbo: false }, class:"item-red-btn"%>
       <% end %>
-  <% else %>
-  <%= link_to "購入画面に進む", item_purchases_path(item_id: @item.id), data: { turbo: false }, class: "item-red-btn" %>
+    <% end %>
   <% end %>
+
+
 
 
     <div class="item-explain-box">
