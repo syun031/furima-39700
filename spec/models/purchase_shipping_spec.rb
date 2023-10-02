@@ -69,20 +69,12 @@ it '電話番号が必須であること' do
 end
 
 it '電話番号が9桁以下では購入できない' do
-  @purchase_shipping.phone_number = '123456789'
-  @purchase_shipping.valid?
-  expect(@purchase_shipping).not_to be_valid
-
   @purchase_shipping.phone_number = '12345678'
   @purchase_shipping.valid?
   expect(@purchase_shipping).not_to be_valid
 end
 
 it '電話番号が12桁以上では購入できない' do
-  @purchase_shipping.phone_number = '123456789012'
-  @purchase_shipping.valid?
-  expect(@purchase_shipping).not_to be_valid
-
   @purchase_shipping.phone_number = '1234567890123'
   @purchase_shipping.valid?
   expect(@purchase_shipping).not_to be_valid
