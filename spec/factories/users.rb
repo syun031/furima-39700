@@ -3,7 +3,7 @@ FactoryBot.define do
     nickname { "テスト" }
     email {Faker::Internet.email}
     password { Faker::Internet.password(min_length: 8, mix_case: true, special_characters: false) }
-    password_confirmation { Faker::Internet.password(min_length: 8, mix_case: true, special_characters: false) }
+    password_confirmation { |attrs| attrs[:password] }
     last_name { "田中"}
     first_name { "太郎" }
     last_name_kana { "タナカ" }

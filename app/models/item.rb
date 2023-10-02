@@ -7,6 +7,7 @@ class Item < ApplicationRecord
   belongs_to :prefecture
   belongs_to :days_to_ship
   belongs_to :user
+  has_one :purchase
 
   validates :image, presence: true
   validates :price, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999 }
