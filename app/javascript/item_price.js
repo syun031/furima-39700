@@ -24,7 +24,7 @@ document.addEventListener("turbo:load", () => {
 
       addTaxDom.textContent = `¥`;
       profitDom.textContent = `¥`;
-=======
+
       // 値が空の場合も手数料と利益をクリア
       addTaxDom.textContent = "";
       profitDom.textContent = "";
@@ -38,7 +38,7 @@ document.addEventListener("turbo:load", () => {
 
   // ページロード時に初期表示として手数料と利益を計算
   calculateAndDisplay();
-=======
+
   // ページロード時にも手数料と利益を更新
   updatePriceInfo();
 
