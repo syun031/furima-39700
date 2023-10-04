@@ -11,8 +11,8 @@ document.addEventListener("turbo:load", () => {
       let tax, profit;
 
       if (price < 1000) {
-        tax = 0;
-        profit = price;
+        tax = Math.floor(price * 0.1);
+        profit = price - tax;
       } else {
         tax = Math.floor(price * 0.1);
         profit = price - tax;
